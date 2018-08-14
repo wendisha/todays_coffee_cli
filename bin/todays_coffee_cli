@@ -1,1 +1,5 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby       
+
+require './lib/todays_coffee_cli'
+
+TodaysCoffeeCli::CLI.new.call

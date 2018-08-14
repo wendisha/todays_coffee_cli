@@ -1,5 +1,3 @@
-require "todays_coffee_cli/version"
-
-module TodaysCoffeeCli
-  # Your code goes here...
-end
+#File to access enviroment
+require_relative "./todays_coffee_cli/version"
+require_relative './todays_coffee_cli/cli'
