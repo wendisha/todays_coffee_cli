@@ -1,9 +1,4 @@
 class TodaysCoffeeCli::CLI
-  def call 
-    greeting
-    goodbye
-  end
-  
   def greeting 
     input = nil
     puts <<-DOC.gsub /^\s*/, ''
@@ -18,7 +13,7 @@ class TodaysCoffeeCli::CLI
       random_coffee
     elsif
       input == "E"
-        exit
+        goodbye
     else 
        puts "Please make a valid selection."
        greeting
@@ -80,12 +75,12 @@ class TodaysCoffeeCli::CLI
       puts "More info on coffe 14."
     when "15"
       puts "More info on coffe 15."
-    when "B"  #add option "b"
+    when "B"
       greeting
     else 
-      puts "Let's try that again. Type a number from the list or B to go back to the previous menu."
+      puts "Let's try that again."
+      coffee_list
    end
-    
   end
 
   
@@ -93,6 +88,6 @@ class TodaysCoffeeCli::CLI
   end
   
   def goodbye
-    "Hope you enjoyed Today's Coffee! See you tomorrow!"
+    puts "Hope you enjoyed Today's Coffee! See you tomorrow!"
   end
 end

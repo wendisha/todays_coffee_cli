@@ -2,4 +2,4 @@
 
 require './lib/todays_coffee_cli'
 
-TodaysCoffeeCli::CLI.new.call
+TodaysCoffeeCli::CLI.new.greeting
