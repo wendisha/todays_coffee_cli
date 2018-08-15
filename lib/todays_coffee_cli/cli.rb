@@ -5,21 +5,28 @@ class TodaysCoffeeCli::CLI
   
   def greeting 
     input = nil
-    puts <<-DOC
+    puts <<-DOC.gsub /^\s*/, ''
     Welcome to your daily cup of coffee!
-    Would you like to choose from a list of different types of coffee or are you feeling lucky? Type L for list or R for a random choice.
+    Would you like to choose from a list of different types of delicious coffee or  are you feeling lucky? Type L for list, R for a random choice or E to exit.
     DOC
     input = gets.strip
     if input == "L" || input == "l"
       coffee_list
-    else 
+    elsif
+      input == "R" || input == "r"
       random_coffee
+    elsif
+      input == "E" || input == "e"
+        exit
+    else 
+       puts "Please make a valid selection."
+       greeting
     end
   end 
   
   def coffee_list 
     answer = nil
-    puts <<-DOC
+    puts <<-DOC.gsub /^\s*/, ''
     1.FRAPPUCCINO
     2.CARAMEL MACCHIATO
     3.CAFÉ MOCHA
@@ -40,10 +47,7 @@ class TodaysCoffeeCli::CLI
     Please type the corresponding number, or type B to go back to the previous menu.
     DOC
     answer = gets.strip 
-    if answer == B || answer == b
-      greeting
-    elsif 
-      answer
+ 
     case answer 
     when "1"
       puts "More info on coffe 1."
@@ -75,10 +79,14 @@ class TodaysCoffeeCli::CLI
       puts "More info on coffe 14."
     when "15"
       puts "More info on coffe 15."
+    when "B"  #add option "b"
+      greeting
     else 
       puts "Let's try that again."
+      #coffee_list
     end
   end
+
   
   def random_coffee 
   end
