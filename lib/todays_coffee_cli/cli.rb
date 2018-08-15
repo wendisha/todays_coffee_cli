@@ -9,14 +9,14 @@ class TodaysCoffeeCli::CLI
     Welcome to your daily cup of coffee!
     Would you like to choose from a list of different types of delicious coffee or  are you feeling lucky? Type L for list, R for a random choice or E to exit.
     DOC
-    input = gets.strip
-    if input == "L" || input == "l"
+    input = gets.strip.upcase
+    if input == "L"
       coffee_list
     elsif
-      input == "R" || input == "r"
+      input == "R"
       random_coffee
     elsif
-      input == "E" || input == "e"
+      input == "E"
         exit
     else 
        puts "Please make a valid selection."
@@ -46,7 +46,7 @@ class TodaysCoffeeCli::CLI
     Which coffee type would you like to know more about? 
     Please type the corresponding number, or type B to go back to the previous menu.
     DOC
-    answer = gets.strip 
+    answer = gets.strip.upcase
  
     case answer 
     when "1"
@@ -82,7 +82,7 @@ class TodaysCoffeeCli::CLI
     when "B"  #add option "b"
       greeting
     else 
-      puts "Let's try that again."
+      puts "Let's try that again. Type a number from the list or B to go back to the previous menu."
       #coffee_list
     end
   end
