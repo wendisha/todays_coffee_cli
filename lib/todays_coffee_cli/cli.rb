@@ -1,6 +1,7 @@
 class TodaysCoffeeCli::CLI
   def call 
     greeting
+    goodbye
   end
   
   def greeting 
@@ -83,11 +84,15 @@ class TodaysCoffeeCli::CLI
       greeting
     else 
       puts "Let's try that again. Type a number from the list or B to go back to the previous menu."
-      #coffee_list
-    end
+   end
+    
   end
 
   
   def random_coffee 
+  end
+  
+  def goodbye
+    "Hope you enjoyed Today's Coffee! See you tomorrow!"
   end
 end
