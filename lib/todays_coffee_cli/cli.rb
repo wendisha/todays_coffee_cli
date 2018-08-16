@@ -1,3 +1,5 @@
+#Needs to be fixed: Giving the option to get another coffee after getting info about one. Giving the option to exit while in second menu (list of coffee) and random coffee, if not, it should exit with the goodbye method.
+
 class TodaysCoffeeCli::CLI
   def greeting 
     input = nil
@@ -84,7 +86,9 @@ class TodaysCoffeeCli::CLI
   end
 
   
-  def random_coffee 
+  def random_coffee
+    answer_r = rand(1..15)
+    puts "More info about coffee #{answer_r}"
   end
   
   def goodbye
