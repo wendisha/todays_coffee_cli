@@ -20,6 +20,7 @@ class TodaysCoffeeCli::CLI
        puts "Please make a valid selection."
        greeting
     end
+    @coffee_all = TodaysCoffeeCli::Coffee.coffee_types
   end 
   
   def coffee_list 

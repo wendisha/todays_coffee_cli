@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby       
 
 require "bundler/setup"
-require "daily_deal"
+require "todays_coffee_cli"
 
 #require './lib/todays_coffee_cli'
 
