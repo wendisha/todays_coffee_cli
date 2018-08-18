@@ -9,9 +9,9 @@ class TodaysCoffeeCli::Coffee
   end
   
   def self.scrape_cafepoint
-    #new_doc = []
+    new_doc = []
     doc = Nokogiri::HTML(open("http://www.cafepoint.co.uk/different-types-of-coffee/"))
-    new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").squeeze(" ")
+    new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")
     coffee = self.new
     binding.pry
     coffee.name =
