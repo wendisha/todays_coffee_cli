@@ -13,8 +13,10 @@ class TodaysCoffeeCli::Coffee
     doc = Nokogiri::HTML(open("http://www.cafepoint.co.uk/different-types-of-coffee/"))
     new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")
     coffee = self.new
+    new_doc.each do |x|
+      coffee.name = x
+    end
     binding.pry
-    coffee.name =
     coffee.prep_time =
     coffee.ingredients = 
     coffee.description =
