@@ -41,6 +41,13 @@ class TodaysCoffeeCli::Coffee
       coffee.description = car_p[87..311]
       coffee.instructions = car_p[468..512]+car_ul[169..703]
       
+      elsif x == "AMERICANO"
+      ame_p = doc.search("#AMERICANO p").text
+      ame_ul = doc.search("#AMERICANO ul").text
+      coffee.prep_time = ame_p[1..8]
+      coffee.ingredients = ame_p[296..434]+ame_ul[1..18]
+      coffee.description = ame_p[29..295]
+      coffee.instructions = ame_p[435..503]+ame_ul[21..328]
       binding.pry
       
     #coffee
