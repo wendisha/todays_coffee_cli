@@ -97,6 +97,13 @@ class TodaysCoffeeCli::Coffee
       coffee.description = cor_p[22..427]
       coffee.instructions = cor_p[463..488]+cor_ul[32..180]
       
+      elsif x == "AFFOGATO"
+      afo_p = doc.search("#AFFOGATO p").text
+      afo_ul = doc.search("#AFFOGATO ul").text
+      coffee.prep_time = afo_p[1..6]
+      coffee.ingredients = afo_p[428..488]+afo_ul[1..41]
+      coffee.description = afo_p[24..427]
+      coffee.instructions = afo_p[489..555]+afo_ul[44..517]
       binding.pry
       
     #coffee
