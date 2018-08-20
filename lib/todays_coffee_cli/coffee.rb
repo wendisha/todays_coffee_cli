@@ -72,6 +72,14 @@ class TodaysCoffeeCli::Coffee
       coffee.ingredients = cl_p[293..421]+cl_ul[1..130]
       coffee.description = cl_p[44..292]
       coffee.instructions = cl_p[422..435]+cl_ul[133..788]
+      
+      elsif x == "IRISH COFFEE"
+      ic_p = doc.search("#IRISH-COFFEE p").text
+      ic_ul = doc.search("#IRISH-COFFEE ul").text
+      coffee.prep_time = ic_p[1..7]
+      coffee.ingredients = ic_p[557..631]+ic_ul[1..115]
+      coffee.description = ic_p[63..556]
+      coffee.instructions = ic_p[632..709]+ic_ul[118..364]
       binding.pry
       
     #coffee
