@@ -9,24 +9,23 @@ class TodaysCoffeeCli::Coffee
   #end
   
   def self.scrape_cafepoint
-    @new_doc = []
+    new_doc = []
     doc = Nokogiri::HTML(open("http://www.cafepoint.co.uk/different-types-of-coffee/"))
-    @new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")
-    coffee = self.new
-    new_doc.each do |x|
-      coffee.name = x
-      coffee.prep_time = doc.search("div.col-md-9").text
+    new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")
+    
+    #coffee = self.new
+    #new_doc.each do |x|
+      #coffee.name = x
+      #FRAPPUCCINO
+      frap_p = doc.search("#FRAPPUCCINO p").text
+      frap_ul = doc.search("#FRAPPUCCINO ul").text
+      coffee.prep_time = frap_p[1..11]
+      coffee.ingredients = frap_p[241..298]+frap_ul[0..168]
+      coffee.description = frap_p[61..240]
+      coffee.instructions = frap_p[299..345]+frap_ul[169..701]
       binding.pry
-    end
-    
-    coffee.prep_time =
-      coffee.ingredients = 
-      coffee.description =
-      coffee.instructions =
       
-    coffee
-    new_doc
-    
-    
-  end
+    #coffee
+    #new_doc
+    end
 end

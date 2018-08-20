@@ -92,11 +92,11 @@ class TodaysCoffeeCli::CLI
   end
   
   def coffee_details(input) 
-    puts "Coffee Type:           #{.name}"
-    puts "Preparation Time:          #{.prep_time}"
-    puts "Ingredients:      #{.ingredients}"
-    puts "Description:      #{.description}"
-    puts "Instructions:      #{.instructions}"
+    #puts "Coffee Type:           #{.name}"
+    #puts "Preparation Time:          #{.prep_time}"
+    #puts "Ingredients:      #{.ingredients}"
+    #puts "Description:      #{.description}"
+    #puts "Instructions:      #{.instructions}"
   end 
   
   def goodbye
