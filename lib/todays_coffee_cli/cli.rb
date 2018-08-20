@@ -20,7 +20,7 @@ class TodaysCoffeeCli::CLI
        puts "Please make a valid selection."
        greeting
     end
-    @coffee_all = TodaysCoffeeCli::Coffee.coffee_types
+    #@coffee_all = TodaysCoffeeCli::Coffee.coffee_types
   end 
   
   def coffee_list 
@@ -49,35 +49,35 @@ class TodaysCoffeeCli::CLI
  
     case answer 
     when "1"
-      puts "More info on coffe 1."
+      coffee_details(1)
     when "2"
-      puts "More info on coffe 2."
+      coffee_details(2)
     when "3"
-      puts "More info on coffe 3."
+      coffee_details(3)
     when "4"
-      puts "More info on coffe 4."
+      coffee_details(4)
     when "5"
-      puts "More info on coffe 5."
+      coffee_details(5)
     when "6"
-      puts "More info on coffe 6."
+      coffee_details(6)
     when "7"
-      puts "More info on coffe 7."
+      coffee_details(7)
     when "8"
-      puts "More info on coffe 8."
+      coffee_details(8)
     when "9"
-      puts "More info on coffe 9."
+      coffee_details(9)
     when "10"
-      puts "More info on coffe 10."
+      coffee_details(10)
     when "11"
-      puts "More info on coffe 11."
+      coffee_details(11)
     when "12"
-      puts "More info on coffe 12."
+      coffee_details(12)
     when "13"
-      puts "More info on coffe 13."
+      coffee_details(13)
     when "14"
-      puts "More info on coffe 14."
+      coffee_details(14)
     when "15"
-      puts "More info on coffe 15."
+      coffee_details(15)
     when "B"
       greeting
     else 
@@ -86,11 +86,18 @@ class TodaysCoffeeCli::CLI
    end
   end
 
-  
   def random_coffee
     answer_r = rand(1..15)
-    puts "More info about coffee #{answer_r}"
+    coffee_details(answer_r)
   end
+  
+  def coffee_details(input) 
+    puts "Coffee Type:           #{.name}"
+    puts "Preparation Time:          #{.prep_time}"
+    puts "Ingredients:      #{.ingredients}"
+    puts "Description:      #{.description}"
+    puts "Instructions:      #{.instructions}"
+  end 
   
   def goodbye
     puts "Hope you enjoyed Today's Coffee! See you tomorrow!"
