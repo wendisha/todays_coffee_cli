@@ -34,12 +34,12 @@ class TodaysCoffeeCli::Coffee
       coffee.instructions = car_p[385..417]+car_ul[135..321]
       
       elsif x == "CAFÉ MOCHA"
-      car_p = doc.search("#CAFE-MOCHA p").text
-      car_ul = doc.search("#CAFE-MOCHA ul").text
-      coffee.prep_time = car_p[1..7]
-      coffee.ingredients = car_p[448..467]+car_ul[1..166]
-      coffee.description = car_p[87..311]
-      coffee.instructions = car_p[468..512]+car_ul[169..703]
+      cm_p = doc.search("#CAFE-MOCHA p").text
+      cm_ul = doc.search("#CAFE-MOCHA ul").text
+      coffee.prep_time = cm_p[1..7]
+      coffee.ingredients = cm_p[448..467]+cm_ul[1..166]
+      coffee.description = cm_p[87..311]
+      coffee.instructions = cm_p[468..512]+cm_ul[169..703]
       
       elsif x == "AMERICANO"
       ame_p = doc.search("#AMERICANO p").text
@@ -48,6 +48,14 @@ class TodaysCoffeeCli::Coffee
       coffee.ingredients = ame_p[296..434]+ame_ul[1..18]
       coffee.description = ame_p[29..295]
       coffee.instructions = ame_p[435..503]+ame_ul[21..328]
+      
+      elsif x == "TURKISH COFFEE"
+      tc_p = doc.search("#TURKISH-COFFEE p").text
+      tc_ul = doc.search("#TURKISH-COFFEE ul").text
+      coffee.prep_time = tc_p[1..8]
+      coffee.ingredients = tc_p[348..368]+tc_ul[1..91]
+      coffee.description = tc_p[47..347]
+      coffee.instructions = tc_p[369..382]+tc_ul[94..832]
       binding.pry
       
     #coffee
