@@ -80,6 +80,17 @@ class TodaysCoffeeCli::Coffee
       coffee.ingredients = ic_p[557..631]+ic_ul[1..115]
       coffee.description = ic_p[63..556]
       coffee.instructions = ic_p[632..709]+ic_ul[118..364]
+      
+      elsif x == "ESPRESSO"
+      esp_p = doc.search("#ESPRESSO p").text
+      esp_ul = doc.search("#ESPRESSO ul").text
+      coffee.prep_time = esp_p[1..10]
+      coffee.ingredients = esp_p[391..491]+esp_ul[1..65]
+      coffee.description = esp_p[24..373]
+      coffee.instructions = esp_p[492..505]+esp_ul[68..1206]
+      
+      
+      
       binding.pry
       
     #coffee
