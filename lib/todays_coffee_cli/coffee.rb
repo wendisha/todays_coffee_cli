@@ -89,7 +89,13 @@ class TodaysCoffeeCli::Coffee
       coffee.description = esp_p[24..373]
       coffee.instructions = esp_p[492..505]+esp_ul[68..1206]
       
-      
+      elsif x == "CORTADO"
+      cor_p = doc.search("#CORTADO p").text
+      cor_ul = doc.search("#CORTADO ul").text
+      coffee.prep_time = cor_p[1..6]
+      coffee.ingredients = cor_p[428..462]+cor_ul[1..29]
+      coffee.description = cor_p[22..427]
+      coffee.instructions = cor_p[463..488]+cor_ul[32..180]
       
       binding.pry
       
