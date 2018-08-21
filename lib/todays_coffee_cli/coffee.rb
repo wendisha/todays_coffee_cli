@@ -104,6 +104,14 @@ class TodaysCoffeeCli::Coffee
       coffee.ingredients = cap_p[239..355]+cap_ul[1..31]
       coffee.description = cap_p[28..184]
       coffee.instructions = cap_p[356..368]+cap_ul[34..569]
+      
+      elsif x == "PLAIN COFFEE"
+      pc_p = doc.search("#PLAIN-COFFEE p").text
+      pc_ul = doc.search("#PLAIN-COFFEE ul").text
+      coffee.prep_time = pc_p[1..6]
+      coffee.ingredients = pc_p[232..304]+pc_ul[1..62]
+      coffee.description = pc_p[29..231]
+      coffee.instructions = pc_p[305..668]+pc_ul[65..825]
       binding.pry
       
     #coffee
