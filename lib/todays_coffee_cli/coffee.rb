@@ -112,6 +112,14 @@ class TodaysCoffeeCli::Coffee
       coffee.ingredients = pc_p[232..304]+pc_ul[1..62]
       coffee.description = pc_p[29..231]
       coffee.instructions = pc_p[305..668]+pc_ul[65..825]
+      
+      elsif x == "ICED COFFEE"
+      ic_p = doc.search("#ICED-COFFEE p").text
+      ic_ul = doc.search("#ICED-COFFEE ul").text
+      coffee.prep_time = ic_p[1..11]
+      coffee.ingredients = ic_p[13..35]
+      coffee.description = ic_p[36..393]
+      coffee.instructions = ic_p[412..618]+ic_ul[1..436]
       binding.pry
       
     #coffee
