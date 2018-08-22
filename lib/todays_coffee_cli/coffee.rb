@@ -20,7 +20,7 @@ class TodaysCoffeeCli::Coffee
       coffee.description = card.children[7].text #card.css("p")[1].text
       coffee.instructions = card.css("ul")[1].inner_text
       coffee_types << coffee
-      #binding.pry
+      binding.pry
     end
     coffee_types
     #binding.pry

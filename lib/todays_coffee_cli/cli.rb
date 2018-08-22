@@ -47,44 +47,54 @@ class TodaysCoffeeCli::CLI
     Please type the corresponding number, or type B to go back to the previous menu.
     DOC
     answer = gets.strip.upcase
- 
-    case answer 
-    when "1"
-      coffee_details(1)
-    when "2"
-      coffee_details(2)
-    when "3"
-      coffee_details(3)
-    when "4"
-      coffee_details(4)
-    when "5"
-      coffee_details(5)
-    when "6"
-      coffee_details(6)
-    when "7"
-      coffee_details(7)
-    when "8"
-      coffee_details(8)
-    when "9"
-      coffee_details(9)
-    when "10"
-      coffee_details(10)
-    when "11"
-      coffee_details(11)
-    when "12"
-      coffee_details(12)
-    when "13"
-      coffee_details(13)
-    when "14"
-      coffee_details(14)
-    when "15"
-      coffee_details(15)
-    when "B"
+    
+    if answer.to_i > 0 && answer.to_i <= 15
+      coffee_details(answer)
+    elsif 
+      answer == "B"
       greeting
     else 
       puts "Let's try that again."
       coffee_list
-   end
+    end
+    
+    #case answer 
+    #when "1"
+      #coffee_details(1)
+    #when "2"
+      #coffee_details(2)
+    #when "3"
+      #coffee_details(3)
+    #when "4"
+      #coffee_details(4)
+    #when "5"
+      #coffee_details(5)
+    #when "6"
+      #coffee_details(6)
+    #when "7"
+      #coffee_details(7)
+   # when "8"
+      #coffee_details(8)
+    #when "9"
+      #coffee_details(9)
+    #when "10"
+      #coffee_details(10)
+    #when "11"
+     # coffee_details(11)
+    #when "12"
+      #coffee_details(12)
+    #when "13"
+      #coffee_details(13)
+   # when "14"
+     # coffee_details(14)
+    #when "15"
+     # coffee_details(15)
+   # when "B"
+     # greeting
+   # else 
+     # puts "Let's try that again."
+      #coffee_list
+  # end
   end
 
   def random_coffee
@@ -92,11 +102,11 @@ class TodaysCoffeeCli::CLI
     coffee_details(answer_r)
   end
   
-  def coffee_details(input)
-    x = TodaysCoffeeCli::Coffee.scrape_cafepoint
-    x[input.to_i-1]
+  def coffee_details(answer)
+    @coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
+    y = x[answer-1]
     
-    puts "Coffee Type:           #{coffee.name}"
+    puts "Coffee Type:           #{ycoffee.name}"
     binding.pry
     #puts "Preparation Time:          #{.prep_time}"
     #puts "Ingredients:      #{.ingredients}"
