@@ -1,11 +1,13 @@
 #Needs to be fixed: Giving the option to get another coffee after getting info about one. Giving the option to exit while in second menu (list of coffee) and random coffee, if not, it should exit with the goodbye method.
+require "pry"
 
 class TodaysCoffeeCli::CLI
+  
   def greeting 
     input = nil
     puts <<-DOC.gsub /^\s*/, ''
     Welcome to your daily cup of coffee!
-    Would you like to choose from a list of different types of delicious coffee or  are you feeling lucky? Type L for list, R for a random choice or E to exit.
+    Would you like to choose from a list of different types of coffee or are you feeling lucky? Type L for list, R for a random choice or E to exit.
     DOC
     input = gets.strip.upcase
     if input == "L"
@@ -20,7 +22,6 @@ class TodaysCoffeeCli::CLI
        puts "Please make a valid selection."
        greeting
     end
-    #@coffee_all = TodaysCoffeeCli::Coffee.coffee_types
   end 
   
   def coffee_list 
@@ -91,8 +92,12 @@ class TodaysCoffeeCli::CLI
     coffee_details(answer_r)
   end
   
-  def coffee_details(input) 
-    #puts "Coffee Type:           #{.name}"
+  def coffee_details(input)
+    x = TodaysCoffeeCli::Coffee.scrape_cafepoint
+    x[input.to_i-1]
+    
+    puts "Coffee Type:           #{coffee.name}"
+    binding.pry
     #puts "Preparation Time:          #{.prep_time}"
     #puts "Ingredients:      #{.ingredients}"
     #puts "Description:      #{.description}"
