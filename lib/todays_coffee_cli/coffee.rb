@@ -16,16 +16,20 @@ class TodaysCoffeeCli::Coffee
       coffee = self.new
       coffee.name = card.attributes["id"].value 
       coffee.prep_time = card.css("p").children[1].inner_text.strip
-      coffee.ingredients = card.css("ul").first.inner_text
       coffee.description = card.children[7].text #card.css("p")[1].text
-      coffee.instructions = card.css("ul")[1].inner_text
+      if coffee.name == "ICED COFFEE"
+        coffee.instructions = card.css("ul").first.inner_text
+        coffee.ingredients = card.css("p").children[4].text 
+      else
+        coffee.ingredients = card.css("ul").first.inner_text
+        coffee.instructions = card.css("ul")[1].inner_text
+      end
       coffee_types << coffee
-      binding.pry
     end
     coffee_types
-    #binding.pry
   end
 end
+
 
 #new_doc = []
 #new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")
