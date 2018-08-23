@@ -6,8 +6,11 @@ class TodaysCoffeeCli::CLI
   def greeting 
     input = nil
     puts <<-DOC.gsub /^\s*/, ''
-    Welcome to your daily cup of coffee!
-    Would you like to choose from a list of different types of coffee or are you feeling lucky? Type L for list, R for a random choice or E to exit.
+    .                                                                          .
+    ------------------  Welcome to your daily cup of coffee!  ------------------
+    Would you like to choose from a list of different types of coffee or are you 
+    feeling lucky? Type L for list, R for a random choice or E to exit.
+    .                                                                          .
     DOC
     input = gets.strip.upcase
     if input == "L"
@@ -103,15 +106,14 @@ class TodaysCoffeeCli::CLI
   end
   
   def coffee_details(answer)
-    @coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
-    y = x[answer-1]
+    coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
+    the_coffee = coffees[answer.to_i-1]
     
-    puts "Coffee Type:           #{ycoffee.name}"
-    binding.pry
-    #puts "Preparation Time:          #{.prep_time}"
-    #puts "Ingredients:      #{.ingredients}"
-    #puts "Description:      #{.description}"
-    #puts "Instructions:      #{.instructions}"
+    puts "Coffee Type:           #{the_coffee.name}"
+    puts "Preparation Time:          #{the_coffee.prep_time}"
+    puts "Ingredients:      #{the_coffee.ingredients}"
+    puts "Description:      #{the_coffee.description}"
+    puts "Instructions:      #{the_coffee.instructions}"
   end 
   
   def goodbye
