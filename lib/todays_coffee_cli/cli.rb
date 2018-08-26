@@ -2,29 +2,32 @@
 require "pry"
 
 class TodaysCoffeeCli::CLI
-  
   def greeting 
     input = nil
     puts <<-DOC.gsub /^\s*/, ''
     .                                                                          .
     ------------------  Welcome to your daily cup of coffee!  ------------------
     Would you like to choose from a list of different types of coffee or are you 
-    feeling lucky? Type L for list, R for a random choice or E to exit.
+    feeling lucky? Type L for list, R for a random choice or exit.
     .                                                                          .
     DOC
     input = gets.strip.upcase
-    if input == "L"
-      coffee_list
-    elsif
-      input == "R"
-      random_coffee
-    elsif
-      input == "E"
-        goodbye
-    else 
-       puts "Please make a valid selection."
-       greeting
+    while input != "E"
+      if input == "L"
+        coffee_list
+      elsif
+        input == "R"
+        random_coffee
+    #elsif
+      #input == "E"
+        #goodbye
+      else 
+         puts "Please make a valid selection."
+         greeting
+      end
     end
+    goodbye
+    exit
   end 
   
   
