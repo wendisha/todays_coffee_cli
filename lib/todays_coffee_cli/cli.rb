@@ -27,10 +27,11 @@ class TodaysCoffeeCli::CLI
     end
   end 
   
+  
   def coffee_list 
     answer = nil
     puts <<-DOC.gsub /^\s*/, ''
-    1.FRAPPUCCINO
+    1.FRAPPUCCINO     #not hardcoded, from scraping
     2.CARAMEL MACCHIATO
     3.CAFÉ MOCHA
     4.AMERICANO
@@ -60,61 +61,25 @@ class TodaysCoffeeCli::CLI
       puts "Let's try that again."
       coffee_list
     end
-    
-    #case answer 
-    #when "1"
-      #coffee_details(1)
-    #when "2"
-      #coffee_details(2)
-    #when "3"
-      #coffee_details(3)
-    #when "4"
-      #coffee_details(4)
-    #when "5"
-      #coffee_details(5)
-    #when "6"
-      #coffee_details(6)
-    #when "7"
-      #coffee_details(7)
-   # when "8"
-      #coffee_details(8)
-    #when "9"
-      #coffee_details(9)
-    #when "10"
-      #coffee_details(10)
-    #when "11"
-     # coffee_details(11)
-    #when "12"
-      #coffee_details(12)
-    #when "13"
-      #coffee_details(13)
-   # when "14"
-     # coffee_details(14)
-    #when "15"
-     # coffee_details(15)
-   # when "B"
-     # greeting
-   # else 
-     # puts "Let's try that again."
-      #coffee_list
-  # end
   end
+
 
   def random_coffee
     answer_r = rand(1..15)
     coffee_details(answer_r)
   end
   
+  
   def coffee_details(answer)
     coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
     the_coffee = coffees[answer.to_i-1]
-    
-    puts "Coffee Type:           #{the_coffee.name}"
-    puts "Preparation Time:          #{the_coffee.prep_time}"
-    puts "Ingredients:      #{the_coffee.ingredients}"
-    puts "Description:      #{the_coffee.description}"
-    puts "Instructions:      #{the_coffee.instructions}"
+    puts "Coffee Type:  #{the_coffee.name}"
+    puts "Preparation Time:  #{the_coffee.prep_time}"
+    puts "Ingredients:  #{the_coffee.ingredients}"
+    puts "Description:  #{the_coffee.description}"
+    puts "Instructions:  #{the_coffee.instructions}"
   end 
+  
   
   def goodbye
     puts "Hope you enjoyed Today's Coffee! See you tomorrow!"
