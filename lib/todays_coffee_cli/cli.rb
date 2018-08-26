@@ -30,26 +30,11 @@ class TodaysCoffeeCli::CLI
   
   def coffee_list 
     answer = nil
-    puts <<-DOC.gsub /^\s*/, ''
-    1.FRAPPUCCINO     #not hardcoded, from scraping
-    2.CARAMEL MACCHIATO
-    3.CAFÉ MOCHA
-    4.AMERICANO
-    5.TURKISH COFFEE
-    6.CAFE CUBANO
-    7.CAFÉ LATTE
-    8.IRISH COFFEE
-    9.ESPRESSO
-    10.CORTADO
-    11.AFFOGATO
-    12.CAPPUCCINO
-    13.GOOD OLD PLAIN COFFEE 
-    14.ICED COFFEE 
-    15.CAFÉ AU LAIT
-    
-    Which coffee type would you like to know more about? 
-    Please type the corresponding number, or type B to go back to the previous menu.
-    DOC
+    @coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
+    @coffees.each.with_index(1) do |coffee, index|
+      puts "#{index}. #{coffee.name}"
+    end
+    puts "Which coffee type would you like to know more about? Type the number or B to go back to the previous menu."
     answer = gets.strip.upcase
     
     if answer.to_i > 0 && answer.to_i <= 15
@@ -71,8 +56,7 @@ class TodaysCoffeeCli::CLI
   
   
   def coffee_details(answer)
-    coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
-    the_coffee = coffees[answer.to_i-1]
+    the_coffee = @coffees[answer.to_i-1]
     puts "Coffee Type:  #{the_coffee.name}"
     puts "Preparation Time:  #{the_coffee.prep_time}"
     puts "Ingredients:  #{the_coffee.ingredients}"
