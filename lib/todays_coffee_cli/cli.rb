@@ -1,29 +1,33 @@
-#Spaces
-#Needs to be fixed: Giving the option to get another coffee after getting info about one. Giving the option to exit while in second menu (list of coffee) and random coffee, if not, it should exit with the goodbye method.
-require "pry"
-
 class TodaysCoffeeCli::CLI
   @@coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
+  
   def greeting 
     input = nil
-    while input != "E"
-      puts <<-DOC.gsub /^\s*/, ''
-      .                                                                          .
-      ------------------  Welcome to your daily cup of coffee!  ------------------
-      Would you like to choose from a list of different types of coffee or are you 
-      feeling lucky? Type L for list, R for a random choice or E to exit.
-      .                                                                          .
-      DOC
-      input = gets.strip.upcase
-      if input == "L"
-        coffee_list
-      elsif input == "R"
-        random_coffee
-      else 
-        puts "Please make a valid selection."
-      end
+    puts <<-DOC.gsub /^\s*/, ''
+    ------------------  Welcome to your daily cup of coffee!  ------------------
+    Would you like to choose from a list of different types of coffee or are you 
+      feeling lucky? Type L for list or R for a random choice.
+    DOC
+    input = gets.strip.upcase
+    if input == "L"
+      coffee_list
+    elsif input == "R"
+      random_coffee
+    else 
+      puts "Please make a valid selection."
     end
-    goodbye
+    
+    puts ""
+    puts "Would you like to learn about another coffee type? Type Y or N."
+    input = gets.strip.upcase
+    if input == "Y"
+      greeting
+    elsif input == "N"
+      goodbye
+    else
+      puts "That is not a valid answer."
+      greeting
+    end
   end 
   
   
@@ -32,7 +36,7 @@ class TodaysCoffeeCli::CLI
     @@coffees.each.with_index(1) do |coffee, index|
       puts "#{index}. #{coffee.name}"
     end
-    puts "Which coffee type would you like to know more about? Type the number, B to go back or E to exit."
+    puts "Which coffee type would you like to know more about? Type the number or B to go back."
     answer = gets.strip.upcase
     if answer.to_i > 0 && answer.to_i <= 15
       coffee_details(answer)
@@ -40,6 +44,7 @@ class TodaysCoffeeCli::CLI
       greeting
     else 
       puts "Let's try that again."
+      coffee_list
     end
   end
 
