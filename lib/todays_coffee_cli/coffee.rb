@@ -8,16 +8,14 @@ class TodaysCoffeeCli::Coffee
     coffee_cards = doc.css(".col-md-9 section")
     coffee_cards.each do |card|
       coffee = self.new
-      coffee.name = card.children[1].text                               #card.attributes["id"].value 
+      coffee.name = card.children[1].text                               
       coffee.prep_time = card.css("p").children[1].inner_text.strip
-      coffee.description = card.children[7].text                        #card.css("p")[1].text
-      #binding.pry
+      coffee.description = card.children[7].text                       
       if coffee.name == "ICED COFFEE"
         coffee.instructions = card.css("ul").first.inner_text
         coffee.ingredients = card.css("p").children[4].text 
       else
         coffee.ingredients = card.css("ul").first.inner_text
-        #binding.pry
         coffee.instructions = card.css("ul")[1].inner_text
       end
       coffee_types << coffee
@@ -25,7 +23,3 @@ class TodaysCoffeeCli::Coffee
     coffee_types
   end
 end
-
-
-#new_doc = []
-#new_doc = doc.search("div.col-md-3").text.to_s.gsub(/\n/, " ").strip.gsub(/\s{2,}/, ",").split(",")

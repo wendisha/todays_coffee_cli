@@ -3,6 +3,4 @@
 require "bundler/setup"
 require "todays_coffee_cli"
 
-#require './lib/todays_coffee_cli'
-
 TodaysCoffeeCli::CLI.new.greeting

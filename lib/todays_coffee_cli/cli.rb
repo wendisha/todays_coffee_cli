@@ -58,9 +58,13 @@ class TodaysCoffeeCli::CLI
   def coffee_details(answer)
     the_coffee = @@coffees[answer.to_i-1]
     puts "Coffee Type:  #{the_coffee.name}"
+    puts ""
     puts "Preparation Time:  #{the_coffee.prep_time}"
+    puts ""
     puts "Ingredients:  #{the_coffee.ingredients}"
+    puts ""
     puts "Description:  #{the_coffee.description}"
+    puts ""
     puts "Instructions:  #{the_coffee.instructions}"
   end 
   

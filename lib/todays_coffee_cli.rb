@@ -1,4 +1,3 @@
-#File to access enviroment
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
