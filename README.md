@@ -1,28 +1,15 @@
 # TodaysCoffeeCli
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/todays_coffee_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to your new Ruby Gem! It provides a CLI to access information about 15 different types of coffee as per the Cafe Point website.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'todays_coffee_cli'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install todays_coffee_cli
+$ gem install todays_coffee_cli
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+$ todays_coffee_cli
 
 ## Development
 

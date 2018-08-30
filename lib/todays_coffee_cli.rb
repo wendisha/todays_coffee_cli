@@ -5,5 +5,5 @@ require 'pry'
 require_relative "./todays_coffee_cli/version"
 require_relative './todays_coffee_cli/coffee'
 require_relative './todays_coffee_cli/cli'
-
+require_relative './todays_coffee_cli/scraper'
 

@@ -1,7 +1,11 @@
 class TodaysCoffeeCli::CLI
-  @@coffees = TodaysCoffeeCli::Coffee.scrape_cafepoint
   
-  def greeting 
+  def call 
+    TodaysCoffeeCli::Scraper.scrape_cafepoint
+    greeting
+  end 
+  
+  def greeting
     input = nil
     puts <<-DOC.gsub /^\s*/, ''
     ------------------  Welcome to your daily cup of coffee!  ------------------
@@ -33,7 +37,7 @@ class TodaysCoffeeCli::CLI
   
   def coffee_list 
     answer = nil
-    @@coffees.each.with_index(1) do |coffee, index|
+    TodaysCoffeeCli::Coffee.all.each.with_index(1) do |coffee, index|
       puts "#{index}. #{coffee.name}"
     end
     puts "Which coffee type would you like to know more about? Type the number or B to go back."
@@ -56,7 +60,7 @@ class TodaysCoffeeCli::CLI
   
   
   def coffee_details(answer)
-    the_coffee = @@coffees[answer.to_i-1]
+    the_coffee = TodaysCoffeeCli::Coffee.all[answer.to_i-1]
     puts "Coffee Type:  #{the_coffee.name}"
     puts ""
     puts "Preparation Time:  #{the_coffee.prep_time}"
